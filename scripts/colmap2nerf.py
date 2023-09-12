@@ -94,14 +94,14 @@ def run_colmap(args):
         shutil.rmtree(sparse)
     except:
         pass
-    do_system(f"mkdir {sparse}")
+    do_system(f"mkdir \"{sparse}\"")
     do_system(f"colmap mapper --database_path {db} --image_path {images} --output_path {sparse}")
     do_system(f"colmap bundle_adjuster --input_path {sparse}/0 --output_path {sparse}/0 --BundleAdjustment.refine_principal_point 1")
     try:
         shutil.rmtree(text)
     except:
         pass
-    do_system(f"mkdir {text}")
+    do_system(f"mkdir \"{text}\"")
     do_system(f"colmap model_converter --input_path {sparse}/0 --output_path {text} --output_type TXT")
 
 def variance_of_laplacian(image):
